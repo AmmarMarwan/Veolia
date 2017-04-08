@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>View</title>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <label for="email">Nom:</label>
+            <input type="text" class="form-control" id="nom">
+        </div>
+        <div class="form-group">
+            <label for="text">Prénom:</label>
+            <input type="text" class="form-control" id="prenom">
+        </div>
+        <div class="form-group">
+            <label for="text">Address:</label>
+            <input type="text" class="form-control" id="adress">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="text">Commune:</label>
+            <input type="text" class="form-control" id="commune">
+        </div>
+        <div class="form-group">
+            <label for="text">Numero Tel:</label>
+            <input type="text" class="form-control" id="tel">
+        </div>
+       
+
+        <button type="submit" id="btnSaveData" class="btn btn-default">Submit</button>
+    </form>
+
+    <script>
+        $("#btnSaveData").on("click", function (e) {
+            e.preventDefault();
+            var name = $("#nom").val(),
+                prenom = $("#prenom").val(),
+                //adress = $("#adress").val(),
+                email = $("#email").val(),
+                tel = $("#tel").val(),
+                commune = $("#commune").val(),
+                data = {
+                    "userId": 4,
+                    "clientName": name,
+                    "clientSurame": prenom,
+                    "clientEmail": email,
+                    "clientNumTel": tel,
+                    "adress": [
+                        {
+                            "adress": "asuuijj",
+                            "commune": "chdiei"
+                        }
+                    ]
+                    
+                };
+            
+
+            $.post("http://localhost:52171/api/Clients", data, function (data) {
+                clientID = data;
+                console.log(data);
+            });
+
+            // new code
+           
+
+
+
+        });
+    </script>
+
+</body>
+</html>
