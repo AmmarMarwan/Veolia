@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Veolia.Client>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Prenom:
+        </th>
+        <th>
+            Nom:
+        </th>
+        <th>
+            Adress:
+        </th>
+        <th>
+            Commune:
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.clientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.clientSurame)
+            </td>
+            <td>
+                @if (item.adress.Count() > 0)
+                {
+                    if (item.adress[0].relationFormAdress.Count() > 0)
+                    {
+                        if (!item.adress[0].relationFormAdress[0].adressFacture)
+                        {
+                            @Html.DisplayFor(modelItem => item.adress[0].adress)
+                            <td>
+                            @Html.DisplayFor(modelItem => item.adress[0].commune)
+                                </td>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.adress[1].adress)
+                            @Html.DisplayFor(modelItem => item.adress[1].commune)
+                        }
+                    }
+                }
+            
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.clientID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.clientID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.clientID }) |
+                @Html.ActionLink("Voir Formulaire", "DetailsUsingClient/" + item.clientID, "FormControlConforms")
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>

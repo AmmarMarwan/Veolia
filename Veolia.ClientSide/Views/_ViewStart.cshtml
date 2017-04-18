@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #menu ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    #menu li {
+        float: left;
+        margin: auto;
+        padding: 0;
+        background-color: black;
+    }
+
+        #menu li a {
+            display: block;
+            width: 100px;
+            color: white;
+            text-decoration: none;
+            padding: 5px;
+        }
+
+            #menu li a:hover {
+                color: #00FFFF;
+            }
+    #menu ul li ul {
+        display: none;
+    }
+    #menu ul li:hover ul {
+        display: block;
+    }
+
+    #menu li:hover ul li {
+        float: none;
+    }
+    #menu li ul {
+        position: absolute;
+    }
+    #menu {
+        height: 50px;
+    }
+</style>
+<div id="menu">
+    <ul>
+        <li><a>@Html.ActionLink("Accueil", "Index", "Home")</a></li>
+        <li>
+            <a>Controles Conformité Branchements</a>
+            <ul>
+                <li><a>@Html.ActionLink("List Clients Grenoble", "Index/Grenoble", "Clients")</a></li>
+                <li><a>@Html.ActionLink("List Clients Lyon", "Index/Lyon", "Clients")</a></li>
+                <li><a>@Html.ActionLink("List Clients Jura", "Index/Jura", "Clients")</a></li>
+                <li><a>@Html.ActionLink("List Clients Total", "Index/Total", "Clients")</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Assainissement Non Collectif</a></li>
+    </ul>
+</div>

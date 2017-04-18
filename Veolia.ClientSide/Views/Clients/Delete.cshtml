@@ -1,0 +1,80 @@
+﻿@model Veolia.Client
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientSurame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientSurame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientNumTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientNumTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientDateCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientDateCreation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clintDateModification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clintDateModification)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

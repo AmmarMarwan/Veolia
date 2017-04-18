@@ -1,0 +1,215 @@
+﻿@model IEnumerable<Veolia.FormControlConform>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nom :
+        </th>
+        <th>
+            Prenom :
+        </th>
+        <th>
+            Email Client :
+        </th>
+        <th>
+            Numero de Tel :
+        </th>
+        <th>
+            Adress :
+        </th>
+        <th>
+            Adress FActure :
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.presenceRegardEU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.regardEUAccessible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.presenceRegardEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.regardEPAccessible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.natureEffluent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typeBranchement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dispositifAntiReflux)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salleDeBain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.evier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.laveLinge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.laveVaisselle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.systemeRelevage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fosseSeptique)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreGouttieres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.regardPiedGouttiere)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.evacuationEauPluies)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateControle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.constatEnquete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anomaliesConstatees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recommendationTraveauxMiseConformite)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.clientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.clientSurame)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.clientEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.clientNumTel)
+        </td>
+        
+        
+                    @if (item.client.adress.Count() > 0)
+                    {
+                        if (item.relationFormAdress.Count() > 0)
+                        {
+                            if (!item.relationFormAdress[0].adressFacture)
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.client.adress[0].adress)
+                                    @Html.DisplayFor(modelItem => item.client.adress[0].commune)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.client.adress[1].adress)
+                                    @Html.DisplayFor(modelItem => item.client.adress[1].commune)
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.client.adress[1].adress)
+                                    @Html.DisplayFor(modelItem => item.client.adress[1].commune)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.client.adress[0].adress)
+                                    @Html.DisplayFor(modelItem => item.client.adress[0].commune)
+                                </td>
+                            }
+                        }
+                    }
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.presenceRegardEU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.regardEUAccessible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.presenceRegardEP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.regardEPAccessible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.natureEffluent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeBranchement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dispositifAntiReflux)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salleDeBain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.evier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.laveLinge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.laveVaisselle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.systemeRelevage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fosseSeptique)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreGouttieres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.regardPiedGouttiere)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.evacuationEauPluies)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateControle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.constatEnquete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anomaliesConstatees)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recommendationTraveauxMiseConformite)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.formControlConformID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.formControlConformID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.formControlConformID })
+        </td>
+    </tr>
+}
+
+</table>

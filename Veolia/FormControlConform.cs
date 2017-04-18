@@ -28,7 +28,8 @@ namespace Veolia
         public string natureEffluent { get; set; }
         public string typeBranchement { get; set; }
         public bool dispositifAntiReflux { get; set; }
-        public int wc { get; set; }
+        [RegularExpression(@"(0|1|2|3)")]
+        public string wc { get; set; }
         public int salleDeBain { get; set; }
         public int evier { get; set; }
         public int laveLinge { get; set; }
@@ -38,9 +39,9 @@ namespace Veolia
         public int nombreGouttieres { get; set; }
         public string regardPiedGouttiere { get; set; }
         public string evacuationEauPluies { get; set; }
-        public DateTime dateControle { get; set; }
+        public DateTime? dateControle { get; set; }
         public bool constatEnquete { get; set; }
-        public DateTime anomaliesConstatees { get; set; }
+        public string anomaliesConstatees { get; set; }
         public string recommendationTraveauxMiseConformite { get; set; }
 
     }

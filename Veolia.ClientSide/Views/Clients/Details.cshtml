@@ -1,0 +1,126 @@
+﻿@model Veolia.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientSurame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientSurame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientNumTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientNumTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientDateCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientDateCreation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clintDateModification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clintDateModification)
+        </dd>
+        @if (Model.adress[0].relationFormAdress[0].adressFacture == false)
+        {
+        <dt>
+            Adress Intervention
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[0].adress)
+        </dd>
+        <dt>
+            Commune Intervention
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[0].commune)
+        </dd>
+        <dt>
+            Adress Facturation
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[1].adress)
+        </dd>
+        <dt>
+            Commune Facturation
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[1].commune)
+        </dd>
+        } else {
+        <dt>
+            Adress Intervention
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[0].adress)
+        </dd>
+        <dt>
+            Commune Intervention
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[0].commune)
+        </dd>
+        <dt>
+            Adress Facturation
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[1].adress)
+        </dd>
+        <dt>
+            Commune Facturation
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adress[1].commune)
+        </dd>}
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.clientID }) |
+    @Html.ActionLink("Voir Formulaire", "DetailsUsingClient/" + Model.clientID, "FormControlConforms", new { }, Model) |
+    
+</p>

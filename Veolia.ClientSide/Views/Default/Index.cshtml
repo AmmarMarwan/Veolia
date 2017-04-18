@@ -23,18 +23,28 @@
             <input type="text" class="form-control" id="adress">
         </div>
         <div class="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
             <label for="text">Commune:</label>
             <input type="text" class="form-control" id="commune">
+        </div>
+        <div class="form-group">
+            <label for="text">Address Pour Aacture:</label>
+            <input type="text" class="form-control" id="adressfact">
+        </div>
+        <div class="form-group">
+            <label for="text">Commune Facturation:</label>
+            <input type="text" class="form-control" id="communefact">
+        </div>
+
+
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
         </div>
         <div class="form-group">
             <label for="text">Numero Tel:</label>
             <input type="text" class="form-control" id="tel">
         </div>
-       
+
 
         <button type="submit" id="btnSaveData" class="btn btn-default">Submit</button>
     </form>
@@ -44,7 +54,7 @@
             e.preventDefault();
             var name = $("#nom").val(),
                 prenom = $("#prenom").val(),
-                //adress = $("#adress").val(),
+                adress = $("#adress").val(),
                 email = $("#email").val(),
                 tel = $("#tel").val(),
                 commune = $("#commune").val(),
@@ -53,24 +63,58 @@
                     "clientName": name,
                     "clientSurame": prenom,
                     "clientEmail": email,
-                    "clientNumTel": tel,
-                    "adress": [
-                        {
-                            "adress": "asuuijj",
-                            "commune": "chdiei"
-                        }
-                    ]
-                    
+                    "clientNumTel": tel
                 };
-            
 
             $.post("http://localhost:52171/api/Clients", data, function (data) {
                 clientID = data;
-                console.log(data);
+                data =
+                    {
+                        "clientID": clientID,
+                        "adress": adress,
+                        "commune": commune
+                    };
+                $.post("http://localhost:52171/api/AdressClients", data, function (data) {
+                    adress1ID = data;
+                    data =
+                        {
+                            "clientID": clientID,
+                            "adress": adressfact,
+                            "commune": communefact
+                        };
+                    $.post("http://localhost:52171/api/AdressClients", data, function (data) {
+                        adress2ID = data;
+                        data =
+                            {
+                                "clientID": clientID,
+                                "userID": 4
+
+                            };
+                        $.post("http://localhost:52171/api/FormControlConforms", data, function (data) {
+                            formID = data;
+                            data =
+                                {
+                                    "formControlConformID": formID,
+                                    "adressClientID": adress1ID,
+                                    "adresseFacture": false
+                                };
+                            $.post("http://localhost:52171/api/FormControlConforms", data, function (data) {
+                                formID = data;
+                                data =
+                                    {
+                                        "formControlConformID": formID,
+                                        "adressClientID": adress2ID,
+                                        "adresseFacture": true
+                                    };
+                            });
+                        });
+                    });
+                });
+
             });
 
             // new code
-           
+
 
 
 

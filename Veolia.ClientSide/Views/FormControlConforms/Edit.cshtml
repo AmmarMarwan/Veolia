@@ -1,0 +1,310 @@
+﻿@model Veolia.FormControlConform
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>FormControlConform</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.formControlConformID)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.presenceRegardEU, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.presenceRegardEU)
+                    @Html.ValidationMessageFor(model => model.presenceRegardEU, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.regardEUAccessible, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "",
+                        Value = "",
+                        Selected = true
+
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Oui",
+                        Value = "Oui"
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Non",
+                        Value = "Non"
+                        
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Partiellement",
+                        Value = "Partiellement"
+                    });
+                }
+                @Html.DropDownList("regardEUAccessible", listItems, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.regardEUAccessible, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.presenceRegardEP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.presenceRegardEP)
+                    @Html.ValidationMessageFor(model => model.presenceRegardEP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.regardEPAccessible, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("regardEPAccessible",listItems, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.regardEPAccessible, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.natureEffluent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                 @{
+                     List<SelectListItem> listItems1 = new List<SelectListItem>();
+                     listItems1.Add(new SelectListItem
+                     {
+                         Text = "",
+                         Value = "",
+                         Selected = true
+
+                     });
+                     listItems1.Add(new SelectListItem
+                     {
+                         Text = "Domestique",
+                         Value = "Domestique"
+                     });
+                     listItems1.Add(new SelectListItem
+                     {
+                         Text = "industriel",
+                         Value = "industriel",
+                         
+                     });
+
+                }
+                @Html.DropDownList("natureEffluent", listItems1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.natureEffluent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.typeBranchement, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                unitaire
+                @Html.RadioButtonFor(model => model.typeBranchement,"unitaire" , new { htmlAttributes = new { @class = "form-control" } })
+                séparatif
+                @Html.RadioButtonFor(model => model.typeBranchement,"séparatif" , new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.typeBranchement, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dispositifAntiReflux, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.dispositifAntiReflux)
+                    @Html.ValidationMessageFor(model => model.dispositifAntiReflux, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.wc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Aucun
+                @Html.RadioButtonFor(model => model.wc,"0", new { htmlAttributes = new { @class = "form-control" } })
+                1
+                @Html.RadioButtonFor(model => model.wc, "1", new { htmlAttributes = new { @class = "form-control" } })
+                2
+                @Html.RadioButtonFor(model => model.wc, "2", new { htmlAttributes = new { @class = "form-control" } })
+                3
+                @Html.RadioButtonFor(model => model.wc, "3", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.wc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.salleDeBain, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                aucun
+                @Html.RadioButtonFor(model => model.salleDeBain,0, new { htmlAttributes = new { @class = "form-control" } })
+                1
+                @Html.RadioButtonFor(model => model.salleDeBain, 1, new { htmlAttributes = new { @class = "form-control" } })
+                2
+                @Html.RadioButtonFor(model => model.salleDeBain, 2, new { htmlAttributes = new { @class = "form-control" } })
+                3
+                @Html.RadioButtonFor(model => model.salleDeBain, 3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.salleDeBain, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.evier, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                aucun
+                @Html.RadioButtonFor(model => model.evier, 0, new { htmlAttributes = new { @class = "form-control" } })
+                1
+                @Html.RadioButtonFor(model => model.evier, 1, new { htmlAttributes = new { @class = "form-control" } })
+                2
+                @Html.RadioButtonFor(model => model.evier, 2, new { htmlAttributes = new { @class = "form-control" } })
+                3
+                @Html.RadioButtonFor(model => model.evier, 3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.evier, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.laveLinge, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                aucun
+                @Html.RadioButtonFor(model => model.laveLinge, 0, new { htmlAttributes = new { @class = "form-control" } })
+                1
+                @Html.RadioButtonFor(model => model.laveLinge, 1, new { htmlAttributes = new { @class = "form-control" } })
+                2
+                @Html.RadioButtonFor(model => model.laveLinge, 2, new { htmlAttributes = new { @class = "form-control" } })
+                3
+                @Html.RadioButtonFor(model => model.laveLinge, 3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.laveLinge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.laveVaisselle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                aucun
+                @Html.RadioButtonFor(model => model.laveVaisselle, 0, new { htmlAttributes = new { @class = "form-control" } })
+                1
+                @Html.RadioButtonFor(model => model.laveVaisselle, 1, new { htmlAttributes = new { @class = "form-control" } })
+                2
+                @Html.RadioButtonFor(model => model.laveVaisselle, 2, new { htmlAttributes = new { @class = "form-control" } })
+                3
+                @Html.RadioButtonFor(model => model.laveVaisselle, 3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.laveVaisselle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.systemeRelevage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                aucun
+                @Html.RadioButtonFor(model => model.systemeRelevage, 0, new { htmlAttributes = new { @class = "form-control" } })
+                1
+                @Html.RadioButtonFor(model => model.systemeRelevage, 1, new { htmlAttributes = new { @class = "form-control" } })
+                2
+                @Html.RadioButtonFor(model => model.systemeRelevage, 2, new { htmlAttributes = new { @class = "form-control" } })
+                3
+                @Html.RadioButtonFor(model => model.systemeRelevage, 3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.systemeRelevage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fosseSeptique, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                aucun
+                @Html.RadioButtonFor(model => model.fosseSeptique, 0, new { htmlAttributes = new { @class = "form-control", id = "RadTF" , style = "width:auto;background:none;border:none" } })
+                1
+                @Html.RadioButtonFor(model => model.fosseSeptique, 1, new { htmlAttributes = new { @class = "form-control" } })
+                2
+                @Html.RadioButtonFor(model => model.fosseSeptique, 2, new { htmlAttributes = new { @class = "form-control" } })
+                3
+                @Html.RadioButtonFor(model => model.fosseSeptique, 3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fosseSeptique, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombreGouttieres, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombreGouttieres, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nombreGouttieres, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.regardPiedGouttiere, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("regardPiedGouttiere", listItems, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.regardPiedGouttiere, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.evacuationEauPluies, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                
+                @Html.EditorFor(model => model.evacuationEauPluies,  new { htmlAttributes = new { @class = "form -control" } })
+                @Html.ValidationMessageFor(model => model.evacuationEauPluies, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group input-group-sm">
+            @Html.LabelFor(model => model.dateControle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dateControle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dateControle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.constatEnquete, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    Conforme
+                    @Html.RadioButtonFor(model => model.typeBranchement, "Conforme", new { htmlAttributes = new { @class = "form-control" } })
+                    Non Conforme
+                    @Html.RadioButtonFor(model => model.typeBranchement, "Non Conforme", new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.constatEnquete, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.anomaliesConstatees, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.anomaliesConstatees, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.anomaliesConstatees, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.recommendationTraveauxMiseConformite, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.recommendationTraveauxMiseConformite, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.recommendationTraveauxMiseConformite, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

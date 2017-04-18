@@ -61,12 +61,13 @@ namespace Veolia.DataModel
             }
         }
 
-        public void SaveUpdateAdress(AdressClient adress)
+        public void SaveUpdateAdress(int adressID, AdressClient newadress)
         {
             using (VeoliaContext db = new VeoliaContext())
             {
 
-                db.Entry(adress).State = EntityState.Modified;
+                AdressClient adress = db.AdressClients.Find(adressID);
+                db.Entry(newadress).State = EntityState.Modified;
                 db.SaveChanges();
             }
 

@@ -1,0 +1,208 @@
+﻿@model Veolia.FormControlConform
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FormControlConform</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.client.clientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client.clientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presenceRegardEU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presenceRegardEU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.regardEUAccessible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.regardEUAccessible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presenceRegardEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presenceRegardEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.regardEPAccessible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.regardEPAccessible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.natureEffluent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.natureEffluent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeBranchement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeBranchement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dispositifAntiReflux)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dispositifAntiReflux)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salleDeBain)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salleDeBain)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.evier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.evier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.laveLinge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.laveLinge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.laveVaisselle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.laveVaisselle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.systemeRelevage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.systemeRelevage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fosseSeptique)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fosseSeptique)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreGouttieres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreGouttieres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.regardPiedGouttiere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.regardPiedGouttiere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.evacuationEauPluies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.evacuationEauPluies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateControle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateControle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.constatEnquete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.constatEnquete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anomaliesConstatees)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anomaliesConstatees)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recommendationTraveauxMiseConformite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recommendationTraveauxMiseConformite)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -35,17 +35,8 @@ namespace Veolia.API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdressClient(int id, AdressClient adressClient)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != adressClient.clientID)
-            {
-                return BadRequest();
-            }
-
-            _repo.SaveUpdateAdress(adressClient);
+            _repo.SaveUpdateAdress(id, adressClient);
             return StatusCode(HttpStatusCode.NoContent);
 
         }
